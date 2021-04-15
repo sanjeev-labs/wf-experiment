@@ -6,7 +6,7 @@ on: workflow_dispatch
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
-    if: ${{github.event.pull_request.labels.*.name[0] == 'deploy-ready'}}
+    if: contains(github.event.pull_request.labels.*.name, 'deploy-ready')
     steps: 
       - uses: gr2m/merge-schedule-action@v1
         with:
