@@ -1,4 +1,4 @@
-name: Merge Scheduleon
+name: Merge Schedule
 on:
   pull_request:
     types:
@@ -6,20 +6,19 @@ on:
       - edited
       - synchronize
   schedule:
-    - cron: 0 * * * *
+    - cron: 0 8 * * *
 
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'deploy-ready')
+    if: github.ref == 'refs/heads/master'
     steps:
-      - name: Merge Pull Request 
       - uses: gr2m/merge-schedule-action@v1
         with:
           # Merge method to use. Possible values are merge, squash or
           # rebase. Default is merge.
           merge_method: merge
           #  Time zone to use. Default is UTC.
-          time_zone: "Asia/Kolkata"
+          time_zone: "America/Detroit"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
