@@ -11,7 +11,9 @@ on:
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: |
+        (github.ref == 'refs/heads/main') &&
+        contains( github.event.pull_request.labels.*.name, 'deploy-ready')
     steps:
       - uses: gr2m/merge-schedule-action@v1
         with:
