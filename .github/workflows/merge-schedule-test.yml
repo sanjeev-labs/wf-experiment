@@ -1,4 +1,4 @@
-name: Merge Scheduleon:
+name: Merge Scheduleon
 on:
   pull_request:
     types:
