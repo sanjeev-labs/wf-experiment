@@ -12,7 +12,8 @@ jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.name, 'deploy-ready')
-    steps: 
+    steps:
+      - name: Merge Pull Request 
       - uses: gr2m/merge-schedule-action@v1
         with:
           # Merge method to use. Possible values are merge, squash or
