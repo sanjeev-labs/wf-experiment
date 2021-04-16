@@ -4,16 +4,10 @@ on: workflow_dispatch
 #    - cron: 0 8 * * *
 
 jobs:
-  merge_schedule:
+  build:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels[0].name, 'deploy-ready')
-    steps: 
-      - uses: gr2m/merge-schedule-action@v1
-        with:
-          # Merge method to use. Possible values are merge, squash or
-          # rebase. Default is merge.
-          merge_method: merge
-          #  Time zone to use. Default is UTC.
-          time_zone: "Asia/Kolkata"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+    steps:
+    - name: Dump GitHub context
+    env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
