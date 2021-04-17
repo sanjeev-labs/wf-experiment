@@ -12,8 +12,8 @@ jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     if: |
-        (github.ref == 'refs/heads/main') &&
-        contains( github.event.pull_request.body, 'deploy-ready')
+        (github.base_ref == 'main') &&
+        contains(github.event.pull_request.labels.*.name, 'deploy-ready')
     steps:
       - uses: gr2m/merge-schedule-action@v1
         with:
@@ -34,7 +34,7 @@ jobs:
           GITHUB_CONTEXT_LABEL: ${{ toJSON(github.event.pull_request.labels) }}
           GITHUB_CONTEXT_HAS_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'deploy-ready') }}
           GITHUB_CONTEXT_HAS: ${{ contains( github.event.pull_request.body, 'deploy-ready') }}
-          ALL_CONDITIONS: ${{ (github.ref == 'refs/heads/main') && contains( github.event.pull_request.body, 'deploy-ready') }}
+          ALL_CONDITIONS: ${{ (github.base_ref == 'main') && contains( github.event.pull_request.body, 'deploy-ready') }}
         run: |
              echo "$GITHUB_CONTEXT_EVENT_NAME"
              echo "$GITHUB_CONTEXT"
