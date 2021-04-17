@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
         (github.ref == 'refs/heads/main') &&
-        contains( github.event.pull_request.labels.*.name, 'enhancement')
+        contains( github.event.pull_request.body, 'deploy-ready')
     steps:
       - uses: gr2m/merge-schedule-action@v1
         with:
