@@ -24,3 +24,8 @@ jobs:
           time_zone: "America/Detroit"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+  evt_detail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "PR Output"
+      - run: echo "${{ github.event.pull_request }}"
