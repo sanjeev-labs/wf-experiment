@@ -27,5 +27,8 @@ jobs:
   evt_detail:
     runs-on: ubuntu-latest
     steps:
-      - name: "PR Output"
-      - run: echo "${{ github.event.pull_request }}"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
