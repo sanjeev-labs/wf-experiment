@@ -1,4 +1,4 @@
-name: Merge Merge
+name: Manage Merge
 on:
   pull_request:
     types:
