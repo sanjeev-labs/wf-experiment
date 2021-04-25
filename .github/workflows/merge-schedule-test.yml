@@ -14,10 +14,8 @@ jobs:
     steps:
       - uses: sanjeev-labs/manage-merge@v1.0
         with:
-          # Merge method to use. Possible values are merge, squash or
-          # rebase. Default is merge.
+          target_branch: main
           merge_method: merge
-          #  Time zone to use. Default is UTC.
           time_zone: "America/Detroit"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
