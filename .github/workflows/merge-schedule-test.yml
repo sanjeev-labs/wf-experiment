@@ -12,7 +12,7 @@ jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     steps:
-      - uses: sanjeev-labs/manage-merge@v1.0
+      - uses: sanjeev-labs/manage-merge@v2.0
         with:
           target_branch: main
           merge_method: merge
