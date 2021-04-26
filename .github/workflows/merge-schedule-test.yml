@@ -17,6 +17,7 @@ jobs:
           target_branch: main
           merge_method: merge
           time_zone: "America/Detroit"
+          label_name: deploy-ready
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   evt_detail:
